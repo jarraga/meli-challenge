@@ -13,7 +13,7 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
   return (
     <div>
       <Head>
-        <title>Resultados para "{query}" | MELI frontend challenge</title>
+        <title>Resultados para &quot;{query}&quot; | MELI frontend challenge</title>
         <meta name="description" content="MELI frontend challenge" />
         <link rel="icon" href="/favicon.svg" />
         <meta property="og:title" content={`Resultados para "${query}" | MELI frontend challenge`} />

@@ -14,11 +14,7 @@ export default async function handler(
   url.searchParams.append('q', String(req.query.q))
   url.searchParams.append('limit', String(process.env.API_SEARCH_LIMIT))
 
-  console.log(String(process.env.API_SEARCH_LIMIT))
-
   const searchData = await api<SearchResponse>(url.href)
-
-  console.log(searchData)
 
   const categoriesQueries = searchData.results.map(item =>
     api<CategoryResponse>(`${process.env.API_BASE_URL}categories/${item.category_id}`))

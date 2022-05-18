@@ -17,5 +17,5 @@ export default async function handler(
 
     const result = parseItem(item, description)
 
-    res.status(200).send(result)
+    res.status(200).json(result)
 }

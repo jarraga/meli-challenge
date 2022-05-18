@@ -16,5 +16,5 @@ export default async function handler(
 
   const result = suggestionsResponse.suggested_queries.map(s => s.q)
 
-  res.status(200).send(result)
+  res.status(200).json(result)
 }

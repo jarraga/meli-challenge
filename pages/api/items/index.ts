@@ -26,5 +26,5 @@ export default async function handler(
 
   const result = parseSearch(searchData, majorTotalItemsCategory)
 
-  res.status(200).send(result)
+  res.status(200).json(result)
 }

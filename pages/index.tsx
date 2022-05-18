@@ -7,7 +7,11 @@ const Home: NextPage = () => {
       <Head>
         <title>MELI frontend challenge</title>
         <meta name="description" content="MELI frontend challenge" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" />
+        <meta property="og:title" content="MELI frontend challenge" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/og.jpeg" />
+        <meta property="og:url" content="https://jarraga-meli-challenge.vercel.app" />
       </Head>
 
 

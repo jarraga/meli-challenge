@@ -1,7 +1,12 @@
+import SearchBox from 'components/SearchBox'
+import useLoading from 'hooks/UseLoading'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 
 const Home: NextPage = () => {
+
+  const isLoading = useLoading()
+
   return (
     <div>
       <Head>
@@ -14,6 +19,7 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://jarraga-meli-challenge.vercel.app" />
       </Head>
 
+      <p>{isLoading ? 'LOADING' : 'FALSE'}</p>
 
     </div>
   )

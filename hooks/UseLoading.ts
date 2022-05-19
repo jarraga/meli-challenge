@@ -6,10 +6,14 @@ const useLoading = () => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false)
 
+    const handleLoading = (loading: boolean) => {
+        setIsLoading(loading)
+    }
+
     useEffect(() => {
-        router.events.on('routeChangeStart', () => setIsLoading(true))
-        router.events.on('routeChangeComplete', () => setIsLoading(false))
-        router.events.on('routeChangeError', () => setIsLoading(false))
+        router.events.on('routeChangeStart', () => handleLoading(true))
+        router.events.on('routeChangeComplete', () => handleLoading(false))
+        router.events.on('routeChangeError', () => handleLoading(false))
     })
 
     return isLoading

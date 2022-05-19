@@ -1,4 +1,5 @@
 import { api } from 'helpers/api'
+import useLoading from 'hooks/UseLoading'
 import { useRouter } from "next/router"
 import { ChangeEventHandler, useEffect, useRef, useState } from "react"
 
@@ -6,6 +7,7 @@ const SearchBox = () => {
 
     let timer: NodeJS.Timeout
     const router = useRouter()
+    const isLoading = useLoading()
     const inputElement = useRef<HTMLInputElement>(null);
     const [suggestions, setSuggestions] = useState<string[]>([])
 
@@ -31,12 +33,12 @@ const SearchBox = () => {
     }, [])
 
     return (
-        <div>
-            <input ref={inputElement} onChange={handleInput} type="text" placeholder="Nunca dejes de buscar" />
+        <div className='bg-brand p-2 relative shadow'>
+            <input disabled={isLoading} className={` py-2 px-3 rounded ${isLoading ? 'bg-gray-100' : 'bg-white'}`} ref={inputElement} onChange={handleInput} type="text" placeholder="Nunca dejes de buscar" />
 
-            <div>
+            <div className='absolute left-0 top-full flex flex-col bg-neutral-100 w-full shadow-lg overflow-hidden rounded-b'>
                 {suggestions.map((suggest, i) =>
-                    <p onClick={() => search(suggest)} className="py-4" key={i}>{suggest}</p>)}
+                    <p onClick={() => search(suggest)} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white" key={i}>{suggest}</p>)}
             </div>
         </div>
     )

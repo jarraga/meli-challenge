@@ -3,6 +3,7 @@ import { api } from 'helpers/api'
 import { SearchResult } from 'types/SearchResult'
 import type { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
+import Card from 'components/Card'
 
 interface Props {
   query: string
@@ -22,13 +23,14 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
         <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items?q=${query}`} />
       </Head>
 
-      {searchResult.items.map(item =>
-        <div key={item.id}>
-          <Link href={`/items/${item.id}`}>
-            <a>{item.title}</a>
-          </Link>
+      <div className='w-full md:p-4'>
+        <div className='md:rounded md:shadow bg-white w-full md:max-w-[75%] mx-auto overflow-hidden'>
+          {searchResult.items.map(item =>
+            <Card key={item.id} data={item} />
+          )}
         </div>
-      )}
+      </div>
+
 
     </div>
   )

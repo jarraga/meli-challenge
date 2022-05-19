@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   const isLoading = useLoading()
 
   return (
-    <div>
+    <div className='h-full'>
       <Head>
         <title>MELI frontend challenge</title>
         <meta name="description" content="MELI frontend challenge" />
@@ -19,7 +19,11 @@ const Home: NextPage = () => {
         <meta property="og:url" content="https://jarraga-meli-challenge.vercel.app" />
       </Head>
 
-      <p>{isLoading ? 'LOADING' : 'FALSE'}</p>
+      <div className='w-full h-full flex justify-center items-center'>
+        <p>
+          {isLoading ? 'Cargando...' : 'Escribe algo para empezar a buscar'}
+        </p>
+      </div>
 
     </div>
   )

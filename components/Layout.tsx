@@ -10,7 +10,9 @@ const Layout: FC<Props> = ({ children }) => {
     return (
         <div className="grid grid-rows-[auto_1fr] h-screen">
             <SearchBox />
-            {children}
+            <div className="overflow-y-scroll bg-gray1">
+                {children}
+            </div>
         </div>
     )
 }

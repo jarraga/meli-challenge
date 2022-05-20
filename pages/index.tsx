@@ -19,9 +19,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className='w-full h-full flex justify-center items-center'>
-        <p className='text-lg'>
-          {isLoading ? 'Cargando...' : 'Escribe algo para empezar a buscar'}
-        </p>
+        <p className='text-lg'>Escribe algo para empezar a buscar</p>
       </div>
 
     </div>

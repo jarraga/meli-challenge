@@ -23,7 +23,7 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
         <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items?q=${query}`} />
       </Head>
 
-      <div className='w-full md:p-4'>
+      <div className='w-full md:pt-4'>
         <div className='md:rounded md:shadow bg-white w-full md:max-w-[75%] mx-auto overflow-hidden'>
           {searchResult.items.map(item =>
             <Card key={item.id} data={item} />

@@ -16,12 +16,17 @@ const Layout: FC<Props> = ({ children }) => {
     }, [isLoading])
 
     return (
-        <div className="grid grid-rows-[auto_1fr] h-screen">
-            <SearchBox />
-            <div ref={scrollContainter} className="overflow-y-scroll bg-gray1">
-                {children}
+        <>
+            {isLoading && <div className="fixed top-0 left-0 bg-white/90 sm:bg-white/50 w-full h-full flex justify-center items-center text-lg sm:backdrop-blur z-50">
+                <p className="bg-white px-4 py-2 rounded shadow">Cargando...</p>
+            </div>}
+            <div className="grid grid-rows-[auto_1fr] h-screen">
+                <SearchBox />
+                <div ref={scrollContainter} className={`overflow-y-scroll bg-gray1`}>
+                    {children}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

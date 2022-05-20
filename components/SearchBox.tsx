@@ -65,17 +65,16 @@ const SearchBox = () => {
                 <Link href="/">
                     <img className="h-[48px] cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
-                <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
+                <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${!!suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
                     <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />
                     <div className='bg-gray1 h-full w-[1px]' />
                     <button onClick={() => search('---')} className='navigation text-gray2 px-4'>&#59943;</button>
 
                     {/* Suggestions */}
-                    <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
+                    {!!suggestions.length && <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
                         {suggestions.map((suggest, i) =>
                             <p onClick={() => search(suggest)} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white" key={i}>{suggest}</p>)}
-                    </div>
-
+                    </div>}
                 </div>
             </div>
 

@@ -14,7 +14,7 @@ const useLoading = () => {
         router.events.on('routeChangeStart', () => handleLoading(true))
         router.events.on('routeChangeComplete', () => handleLoading(false))
         router.events.on('routeChangeError', () => handleLoading(false))
-    })
+    }, [])
 
     return isLoading
 }

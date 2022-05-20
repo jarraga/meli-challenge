@@ -6,6 +6,7 @@ const useInnerHeight = () => {
 
     useEffect(() => {
         window.addEventListener('resize', () => setInnerHeight(window.innerHeight))
+        setInnerHeight(window.innerHeight)
     }, [])
 
     return innerHeight

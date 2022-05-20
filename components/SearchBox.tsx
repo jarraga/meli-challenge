@@ -47,10 +47,10 @@ const SearchBox = () => {
     };
 
     useEffect(() => {
-        // const q = router.query.q
-        // setTerm(q ? String(q) : '')
+        const q = router.query.q
+        setTerm(q ? String(q) : '')
         inputElement.current?.focus()
-    }, [router.query])
+    }, [])
 
     useEffect(() => {
         window.addEventListener('keydown', handleKeyDown)
@@ -63,7 +63,7 @@ const SearchBox = () => {
         <div className='bg-brand p-3 relative shadow flex items-center'>
             <div className="mx-auto h-full w-full md:max-w-[75%] flex items-center">
                 <Link href="/">
-                    <img className="h-[48px] cursor-pointer" alt="Logo" src="/favicon.svg" />
+                    <img onClick={() => setTerm('')} className="h-[48px] cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
                 <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${!!suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
                     <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />

@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
 @tailwind base;
 @tailwind utilities;
 
 * {
-    font-family: 'Raleway', sans-serif;
+    font-family: "Proxima Nova",
+        -apple-system,
+        "Helvetica Neue",
+        Helvetica,
+        Roboto,
+        Arial,
+        sans-serif;
+    font-weight: 400;
+}
+
+.navigation {
+    font-family: navigation;
 }

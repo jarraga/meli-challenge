@@ -1,4 +1,3 @@
-import SearchBox from 'components/SearchBox'
 import useLoading from 'hooks/UseLoading'
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -20,7 +19,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className='w-full h-full flex justify-center items-center'>
-        <p>
+        <p className='text-lg'>
           {isLoading ? 'Cargando...' : 'Escribe algo para empezar a buscar'}
         </p>
       </div>

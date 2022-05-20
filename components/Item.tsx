@@ -7,7 +7,6 @@ interface Props {
 
 const Item: FC<Props> = ({ data }) => {
 
-
     return (
         <div className="p-4 flex flex-col bg-white md:rounded md:shadow md:max-w-[1100px] mx-auto">
             <div className="grid md:grid-cols-[680px_1fr] gap-4">
@@ -23,7 +22,6 @@ const Item: FC<Props> = ({ data }) => {
             </div>
         </div>
     )
-
 }
 
 export default Item

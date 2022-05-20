@@ -34,7 +34,11 @@ const SearchBox = () => {
 
     return (
         <div className='bg-brand p-2 relative shadow'>
-            <input disabled={isLoading} className={` py-2 px-3 rounded ${isLoading ? 'bg-gray-100' : 'bg-white'}`} ref={inputElement} onChange={handleInput} type="text" placeholder="Nunca dejes de buscar" />
+            <div className={`w-fit h-full py-2 flex items-center rounded-[2px] shadow ${isLoading ? 'bg-gray-100' : 'bg-white'}`}>
+                <input disabled={isLoading} className={`outline-none px-3 rounded`} ref={inputElement} onChange={handleInput} type="text" placeholder="Nunca dejes de buscar" />
+                <div className='bg-gray1 w-[1px]' />
+                <button className='navigation text-gray2 px-3'>&#59943;</button>
+            </div>
 
             <div className='absolute left-0 top-full flex flex-col bg-neutral-100 w-full shadow-lg overflow-hidden rounded-b'>
                 {suggestions.map((suggest, i) =>

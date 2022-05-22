@@ -17,7 +17,7 @@ const Item: FC<Props> = ({ data }) => {
     const parseHtml = (html: string) => {
         const urlMatches = html.match(/http[^ ,]*/g) || []
         const htmlWithLinks = urlMatches.reduce((acum, m) =>
-            acum.replace(m, `<a title="link" href="${m}" target="_blank">${m}</a>`), html)
+            acum.replace(m, `<a title="link" href="${m}" rel="noreferrer" target="_blank">${m}</a>`), html)
         return htmlWithLinks.replace(/\n/g, '<br>')
     }
 
@@ -60,7 +60,7 @@ const Item: FC<Props> = ({ data }) => {
                             <p className="text-[24px] ml-2">{parseAmount(data.price.amount, true)}</p>
                         </div>
                         <div className="mt-[32px] md:pr-[32px]">
-                            <a href={data.url} target="_blank" title={data.title} >
+                            <a href={data.url} target="_blank" rel="noreferrer" title={data.title} >
                                 <button className="text-white bg-primary hover:bg-primaryHover transition p-4 w-full rounded">Comprar</button>
                             </a>
                         </div>

@@ -21,8 +21,13 @@ const SearchBox = () => {
     const inputElement = useRef<HTMLInputElement>(null);
     const [term, setTerm] = useState('')
     const [suggestions, setSuggestions] = useState<Suggest[]>([])
+    const [once, setOnce] = useState(false)
 
     const showRecents = () => {
+        if (!once) {
+            setOnce(true)
+            return
+        }
         const recents = JSON.parse(localStorage.getItem(LOCAL_STORAGE_RECENT) || '[]') as string[]
         setSuggestions(recents.map(recent => ({ title: recent, recent: true })))
     }
@@ -82,8 +87,11 @@ const SearchBox = () => {
     }, [])
 
     return (
-        <div className='bg-brand p-3 relative shadow flex items-center'>
-            <div className="mx-auto h-full w-full md:max-w-[75%] flex items-center">
+        <div className='bg-brand py-3 px-4 relative shadow flex items-center md:pr-8'>
+
+            {!!suggestions.length && <div className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
+
+            <div className="mx-auto h-full w-full md:max-w-cont flex items-center">
                 <Link href="/">
                     <img onClick={() => setTerm('')} className="h-[48px] cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
@@ -93,13 +101,14 @@ const SearchBox = () => {
                     <button onClick={() => search()} className='navigation text-gray2 px-4'>&#59943;</button>
 
                     {/* Suggestions */}
-                    {!!suggestions.length && <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
-                        {suggestions.map((suggest, i) =>
-                            <div key={i} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white flex items-center" onClick={() => search(suggest.title)}>
-                                {suggest.recent && <img src="/images/recent.svg" className="mr-4" />}
-                                <p>{suggest.title}</p>
-                            </div>)}
-                    </div>}
+                    {!!suggestions.length &&
+                        <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
+                            {suggestions.map((suggest, i) =>
+                                <div key={i} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white flex items-center transition" onClick={() => search(suggest.title)}>
+                                    {suggest.recent && <img src="/images/recent.svg" className="mr-4" />}
+                                    <p>{suggest.title}</p>
+                                </div>)}
+                        </div>}
                 </div>
             </div>
 

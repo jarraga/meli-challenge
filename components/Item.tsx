@@ -15,10 +15,10 @@ const Item: FC<Props> = ({ data }) => {
     }
 
     return (
-        <div className="p-4 flex flex-col bg-white md:rounded md:shadow md:max-w-[1100px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-[680px_1fr]  gap-4">
+        <div className="p-4 flex flex-col bg-white md:rounded md:shadow md:max-w-cont mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr]  gap-4">
                 <div className="order-2 md:order-1">
-                    <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto md:mx-0" src={data.picture} alt={data.title} /> <p className="text-[28px] mt-[32px]">Descripción del producto</p>
+                    <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto" src={data.picture} alt={data.title} /> <p className="text-[28px] mt-[32px]">Descripción del producto</p>
                     <div className="text-[16px] mt-[32px] text-gray4" dangerouslySetInnerHTML={{ __html: parseHtml(data.description) }} />
                 </div>
                 <div className="md:order-2">

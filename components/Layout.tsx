@@ -30,7 +30,7 @@ const Layout: FC<Props> = ({ children }) => {
 
             <div style={{ height: `${innerHeight}px` }} className="grid grid-rows-[auto_1fr] h-screen">
                 <SearchBox />
-                <div ref={scrollContainter} className={`overflow-y-scroll bg-gray1`}>
+                <div ref={scrollContainter} className={`overflow-y-scroll bg-gray1 overflow-x-hidden`}>
                     {children}
                 </div>
             </div>

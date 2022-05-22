@@ -2,7 +2,7 @@ import { api } from 'helpers/api'
 import useLoading from 'hooks/UseLoading'
 import Link from 'next/link'
 import { useRouter } from "next/router"
-import { ChangeEventHandler, useEffect, useRef, useState } from "react"
+import { ChangeEventHandler, FocusEventHandler, useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { motionValues } from 'helpers/motionValues'
 
@@ -26,6 +26,7 @@ const SearchBox = () => {
     const [once, setOnce] = useState(false)
 
     const showRecents = () => {
+
         if (!once) {
             setOnce(true)
             return
@@ -76,6 +77,11 @@ const SearchBox = () => {
         }
     };
 
+    const handleFocus: FocusEventHandler<HTMLInputElement> = (e) => {
+        showRecents()
+        e.target.select()
+    }
+
     useEffect(() => {
         const q = router.query.q
         setTerm(q ? String(q) : '')
@@ -100,7 +106,7 @@ const SearchBox = () => {
                     <img onClick={() => setTerm('')} width={48} height={48} className="cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
                 <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${!!suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
-                    <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onFocus={showRecents} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />
+                    <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onFocus={handleFocus} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />
                     <div className='bg-gray1 h-full w-[1px]' />
                     <button onClick={() => search()} className='navigation text-gray2 px-4'>&#59943;</button>
 

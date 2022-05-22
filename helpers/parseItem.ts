@@ -4,7 +4,8 @@ import { DescriptionResponse } from "types/DescriptionResponse";
 
 export const parseItem = (
     item: ItemResponse,
-    description: DescriptionResponse
+    description: DescriptionResponse,
+    categories: string[]
 ): ItemResult => {
 
     return {
@@ -25,7 +26,8 @@ export const parseItem = (
             free_shipping: item.shipping.free_shipping,
             sold_quantity: item.sold_quantity,
             description: description.plain_text,
-            url: item.permalink
+            url: item.permalink,
+            categories
         }
     }
 }

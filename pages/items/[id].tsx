@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({ itemResult }) => {
         <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items/${item.id}`} />
       </Head>
 
-      <div className='w-full md:p-4'>
+      <div className='w-full'>
         <Item data={item} />
       </div>
 

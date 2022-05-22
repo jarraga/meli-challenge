@@ -18,5 +18,6 @@ export interface ItemResult {
         description: string
         // propiedades adicionales
         url: string
+        categories: string[]
     }
 }

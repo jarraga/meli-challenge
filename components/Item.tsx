@@ -1,4 +1,4 @@
-import Link from "next/link"
+import { useRouter } from "next/router"
 import { FC } from "react"
 import { ItemResult } from "types/ItemResult"
 import Breadcrumb from "./Breadcrumb"
@@ -13,6 +13,8 @@ const CONDITION: Record<string, string> = {
 }
 
 const Item: FC<Props> = ({ data }) => {
+
+    const router = useRouter()
 
     const parseHtml = (html: string) => {
         const urlMatches = html.match(/http[^ ,]*/g) || []
@@ -43,13 +45,29 @@ const Item: FC<Props> = ({ data }) => {
         }
     }
 
+    const share = async () => {
+
+        if (navigator.share) {
+            await navigator.share({
+                title: data.title,
+                url: process.env.NEXT_PUBLIC_APP_BASE_URL + router.asPath
+            })
+        } else {
+            await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_APP_BASE_URL + router.asPath);
+            alert('Enlace copiado!')
+        }
+    }
+
     return (
         <div className="w-full md:max-w-cont mx-auto md:px-4 md:pb-4 pt-0">
             <Breadcrumb paths={data.categories} />
             <div className="p-4 flex flex-col bg-white md:rounded md:shadow ">
                 <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
                     <div className="order-2 md:order-1">
-                        <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto" src={data.picture} alt={data.title} />
+                        <div className="relative">
+                            <img onClick={share} className="absolute right-4 bottom-4 cursor-pointer hover:brightness-95 transition rounded-full shadow-lg" src="/images/share.svg" alt="share" />
+                            <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto" src={data.picture} alt={data.title} />
+                        </div>
                         {data.description && <div className="mt-[32px]">
                             <p className="text-[28px]">Descripción del producto</p>
                             <div className="text-[16px] mt-[32px] text-gray3" dangerouslySetInnerHTML={{ __html: parseHtml(data.description) }} />

@@ -3,6 +3,8 @@ import useLoading from 'hooks/UseLoading'
 import Link from 'next/link'
 import { useRouter } from "next/router"
 import { ChangeEventHandler, useEffect, useRef, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { motionValues } from 'helpers/motionValues'
 
 interface Suggest {
     title: string
@@ -89,8 +91,9 @@ const SearchBox = () => {
 
     return (
         <div className='bg-brand py-3 px-4 relative shadow flex items-center md:pr-8'>
-
-            {!!suggestions.length && <div onClick={() => setSuggestions([])} className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
+            <AnimatePresence>
+                {!!suggestions.length && <motion.div {...motionValues} onClick={() => setSuggestions([])} className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
+            </AnimatePresence>
 
             <div className="mx-auto h-full w-full md:max-w-cont flex items-center">
                 <Link href="/">
@@ -102,14 +105,17 @@ const SearchBox = () => {
                     <button onClick={() => search()} className='navigation text-gray2 px-4'>&#59943;</button>
 
                     {/* Suggestions */}
-                    {!!suggestions.length &&
-                        <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
-                            {suggestions.map((suggest, i) =>
-                                <div key={i} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white flex items-center transition" onClick={() => search(suggest.title)}>
-                                    {suggest.recent && <img width={15} height={15} src="/images/recent.svg" className="mr-4" />}
-                                    <p>{suggest.title}</p>
-                                </div>)}
-                        </div>}
+                    <AnimatePresence>
+                        {!!suggestions.length &&
+                            <motion.div {...motionValues} className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'
+                            >
+                                {suggestions.map((suggest, i) =>
+                                    <div key={i} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white flex items-center transition" onClick={() => search(suggest.title)}>
+                                        {suggest.recent && <img width={15} height={15} src="/images/recent.svg" className="mr-4" />}
+                                        <p>{suggest.title}</p>
+                                    </div>)}
+                            </motion.div>}
+                    </AnimatePresence>
                 </div>
             </div>
 

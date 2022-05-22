@@ -12,7 +12,7 @@ const Card: FC<Props> = ({ data }) => {
     return (
         <Link href={`/items/${data.id}`}>
             <div className="p-4 grid md:grid-cols-[auto_1fr_15%] first:border-t-0 border-t border-gray1 cursor-pointer">
-                <img className="object-contain rounded aspect-square w-[180px] mx-auto md:mx-0" src={data.picture} alt={data.title} />
+                <img width={180} height={180} className="object-contain rounded mx-auto md:mx-0" src={data.picture} alt={data.title} />
                 <div className="md:ml-4 md:mt-0 mt-4">
                     <div className="flex items-center">
                         <p className="text-[24px]">$ {data.price.amount.toLocaleString('de-DE')}</p>

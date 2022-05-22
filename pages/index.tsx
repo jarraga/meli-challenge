@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className='w-full h-full flex flex-col space-y-4 justify-center items-center p-12'>
-        <img alt="Página no encontrada" src="/images/search.svg" />
+        <img width={80} height={80} alt="Página no encontrada" src="/images/search.svg" />
         <p className='text-lg text-center'>Escribe algo en el buscador para ver los resultados</p>
       </div>
 

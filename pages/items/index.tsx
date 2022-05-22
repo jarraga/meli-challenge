@@ -25,7 +25,7 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
 
       {searchResult.items.length == 0 &&
         <div className='w-full h-full flex flex-col space-y-4 justify-center items-center p-12'>
-          <img alt="Página no encontrada" src="/images/noResults.svg" />
+          <img width={80} height={80} alt="Página no encontrada" src="/images/noResults.svg" />
           <p className='text-lg text-center'>No se encontraron resultados, intenta cambiar el término de búsqueda</p>
         </div>}
 

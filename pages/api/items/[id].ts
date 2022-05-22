@@ -18,6 +18,7 @@ export default async function handler(
 
     if (item.error || description.error) {
         res.status(200).json({ error: true })
+        return
     }
 
     const category = await api<CategoryResponse>(`${process.env.API_BASE_URL}categories/${item.category_id}`)

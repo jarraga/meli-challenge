@@ -18,4 +18,6 @@ interface Item {
     picture: string
     condition: string
     free_shipping: boolean
+    // propiedades adicionales
+    state_name: string
 }

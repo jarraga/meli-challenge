@@ -65,6 +65,7 @@ const SearchBox = () => {
 
         if (e.key == 'Enter') {
             search()
+            setSuggestions([])
         }
 
         if (e.key == 'Escape') {
@@ -93,7 +94,7 @@ const SearchBox = () => {
 
             <div className="mx-auto h-full w-full md:max-w-cont flex items-center">
                 <Link href="/">
-                    <img onClick={() => setTerm('')} className="h-[48px] cursor-pointer" alt="Logo" src="/favicon.svg" />
+                    <img onClick={() => setTerm('')} width={48} height={48} className="cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
                 <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${!!suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
                     <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onFocus={showRecents} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />

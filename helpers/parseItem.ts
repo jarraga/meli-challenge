@@ -24,7 +24,8 @@ export const parseItem = (
             condition: item.condition,
             free_shipping: item.shipping.free_shipping,
             sold_quantity: item.sold_quantity,
-            description: description.plain_text
+            description: description.plain_text,
+            url: item.permalink
         }
     }
 }

@@ -16,5 +16,7 @@ export interface ItemResult {
         free_shipping: boolean
         sold_quantity: number
         description: string
+        // propiedades adicionales
+        url: string
     }
 }

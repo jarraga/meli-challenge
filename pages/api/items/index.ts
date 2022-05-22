@@ -26,6 +26,7 @@ export default async function handler(
       items: []
     }
     res.status(200).json(emptyResponse)
+    return
   }
 
   const categoriesQueries = searchData.results.map(item =>

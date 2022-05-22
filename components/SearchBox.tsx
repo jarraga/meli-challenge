@@ -52,7 +52,10 @@ const SearchBox = () => {
 
     const search = (explicitTerm?: string) => {
 
+        if (timer) clearTimeout(timer)
+
         const term = explicitTerm || inputElement.current?.value || ''
+        if (term.length == 0) return
 
         const recents = JSON.parse(localStorage.getItem(LOCAL_STORAGE_RECENT) || '[]') as string[]
         recents.unshift(term)
@@ -86,9 +89,7 @@ const SearchBox = () => {
         const q = router.query.q
         setTerm(q ? String(q) : '')
         inputElement.current?.focus()
-    }, [])
 
-    useEffect(() => {
         window.addEventListener('keydown', handleKeyDown)
         return () => {
             window.removeEventListener('keydown', handleKeyDown)

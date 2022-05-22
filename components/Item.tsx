@@ -49,8 +49,12 @@ const Item: FC<Props> = ({ data }) => {
             <div className="p-4 flex flex-col bg-white md:rounded md:shadow ">
                 <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4">
                     <div className="order-2 md:order-1">
-                        <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto" src={data.picture} alt={data.title} /> <p className="text-[28px] mt-[32px]">Descripción del producto</p>
-                        <div className="text-[16px] mt-[32px] text-gray3" dangerouslySetInnerHTML={{ __html: parseHtml(data.description) }} />
+                        <img className="object-contain rounded aspect-square w-full md:w-[680px] mx-auto" src={data.picture} alt={data.title} />
+                        {data.description && <div className="mt-[32px]">
+                            <p className="text-[28px]">Descripción del producto</p>
+                            <div className="text-[16px] mt-[32px] text-gray3" dangerouslySetInnerHTML={{ __html: parseHtml(data.description) }} />
+                        </div>}
+                        {!data.description && <p className="text-[16px] mt-[32px]">Producto sin descripción</p>}
                     </div>
                     <div className="md:order-2">
                         <p className="text-[14px] md:mt-[32px] text-gray3">{CONDITION[data.condition]} - {parseSoldQuantity(data.sold_quantity)}</p>

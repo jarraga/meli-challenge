@@ -90,7 +90,7 @@ const SearchBox = () => {
     return (
         <div className='bg-brand py-3 px-4 relative shadow flex items-center md:pr-8'>
 
-            {!!suggestions.length && <div className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
+            {!!suggestions.length && <div onClick={() => setSuggestions([])} className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
 
             <div className="mx-auto h-full w-full md:max-w-cont flex items-center">
                 <Link href="/">

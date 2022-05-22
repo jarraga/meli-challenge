@@ -16,6 +16,18 @@ export default async function handler(
 
   const searchData = await api<SearchResponse>(url.href)
 
+  if (searchData.results.length == 0) {
+    const emptyResponse: SearchResult = {
+      author: {
+        name: String(process.env.NAME),
+        lastname: String(process.env.LASTNAME)
+      },
+      categories: [],
+      items: []
+    }
+    res.status(200).json(emptyResponse)
+  }
+
   const categoriesQueries = searchData.results.map(item =>
     api<CategoryResponse>(`${process.env.API_BASE_URL}categories/${item.category_id}`))
 

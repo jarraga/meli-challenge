@@ -1,4 +1,5 @@
 export interface DescriptionResponse {
+    error?: string
     text: string
     plain_text: string
     last_updated: string

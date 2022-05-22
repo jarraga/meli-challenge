@@ -18,7 +18,7 @@ const Card: FC<Props> = ({ data }) => {
                         <p className="text-[24px]">$ {data.price.amount.toLocaleString('de-DE')}</p>
                         {!data.free_shipping &&
                             <div className="ml-4 flex items-center" >
-                                <img src="/images/freeShipping.svg" alt="free shipping" />
+                                <img width={18} height={15} src="/images/freeShipping.svg" alt="free shipping" />
                                 <p className="ml-2 text-[#00a650]">Envío gratis</p>
                             </div>}
                     </div>

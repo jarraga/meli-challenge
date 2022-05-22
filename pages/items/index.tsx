@@ -12,7 +12,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ query, searchResult }) => {
   return (
-    <div>
+    <div className="h-full">
       <Head>
         <title>Resultados para &quot;{query}&quot; | MELI frontend challenge</title>
         <meta name="description" content="MELI frontend challenge" />
@@ -23,16 +23,23 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
         <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items?q=${query}`} />
       </Head>
 
-      <div className='w-full'>
-        <div className="w-full md:max-w-cont mx-auto md:p-4 md:pt-0">
-          <Breadcrumb paths={searchResult.categories} />
-          <div className='md:rounded md:shadow bg-white overflow-hidden'>
-            {searchResult.items.map(item =>
-              <Card key={item.id} data={item} />
-            )}
+      {searchResult.items.length == 0 &&
+        <div className='w-full h-full flex flex-col space-y-4 justify-center items-center p-12'>
+          <img alt="Página no encontrada" src="/images/noResults.svg" />
+          <p className='text-lg text-center'>No se encontraron resultados, intenta cambiar el término de búsqueda</p>
+        </div>}
+
+      {searchResult.items.length > 0 &&
+        <div className='w-full'>
+          <div className="w-full md:max-w-cont mx-auto md:p-4 md:pt-0">
+            <Breadcrumb paths={searchResult.categories} />
+            <div className='md:rounded md:shadow bg-white overflow-hidden'>
+              {searchResult.items.map(item =>
+                <Card key={item.id} data={item} />
+              )}
+            </div>
           </div>
-        </div>
-      </div>
+        </div>}
 
 
     </div>

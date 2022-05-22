@@ -1,4 +1,5 @@
 export interface ItemResponse {
+    error?: string
     id: string
     site_id: string
     title: string

@@ -106,7 +106,7 @@ const SearchBox = () => {
                         <div className='absolute left-0 top-full flex flex-col w-full shadow-lg overflow-hidden rounded-b-[2px] z-10 border-t border-gray1'>
                             {suggestions.map((suggest, i) =>
                                 <div key={i} className="cursor-pointer py-4 px-6 bg-white hover:bg-blue hover:text-white flex items-center transition" onClick={() => search(suggest.title)}>
-                                    {suggest.recent && <img src="/images/recent.svg" className="mr-4" />}
+                                    {suggest.recent && <img width={15} height={15} src="/images/recent.svg" className="mr-4" />}
                                     <p>{suggest.title}</p>
                                 </div>)}
                         </div>}

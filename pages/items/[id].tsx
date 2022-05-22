@@ -33,7 +33,17 @@ const Home: NextPage<Props> = ({ itemResult }) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const itemResult = await api<ItemResult>(`${process.env.BFF_API_BASE_URL}items/${context.params?.id}`)
+  const itemResult = await api<ItemResult | { error: boolean }>(`${process.env.BFF_API_BASE_URL}items/${context.params?.id}`)
+
+  if ('error' in itemResult) {
+    return {
+      redirect: {
+        destination: '/404',
+        permanent: true,
+      },
+    }
+  }
+
   return { props: { itemResult } }
 }
 

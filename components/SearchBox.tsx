@@ -15,7 +15,7 @@ const RECENTS_QUANTITY = 6
 
 const SearchBox = () => {
 
-    let timer: NodeJS.Timeout
+    const [timer, setTimer] = useState<number | null>(null)
     const router = useRouter()
     const isLoading = useLoading()
     const inputElement = useRef<HTMLInputElement>(null);
@@ -35,9 +35,8 @@ const SearchBox = () => {
     const handleInput: ChangeEventHandler<HTMLInputElement> = (e) => {
 
         setTerm(e.target.value)
-
-        clearTimeout(timer)
-        timer = setTimeout(async () => {
+        if (timer) clearTimeout(timer)
+        const timerId = window.setTimeout(async () => {
             if (e.target.value) {
                 const suggestions = await api<string[]>(`/api/suggestions?q=${e.target.value}`)
                 setSuggestions(suggestions.map(suggest => ({ title: suggest, recent: false })))
@@ -45,6 +44,7 @@ const SearchBox = () => {
                 showRecents()
             }
         }, LAZY_INPUT_TIME);
+        setTimer(timerId)
     }
 
     const search = (explicitTerm?: string) => {

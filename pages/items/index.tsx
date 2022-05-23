@@ -4,6 +4,7 @@ import { SearchResult } from 'types/SearchResult'
 import type { GetServerSideProps, NextPage } from 'next'
 import Card from 'components/Card'
 import Breadcrumb from 'components/Breadcrumb'
+import { useEffect, useState } from 'react'
 
 interface Props {
   query: string
@@ -11,6 +12,7 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ query, searchResult }) => {
+
   return (
     <div className="h-full">
       <Head>
@@ -40,8 +42,6 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
             </div>
           </div>
         </div>}
-
-
     </div>
   )
 }

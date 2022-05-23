@@ -15,7 +15,7 @@ const Breadcrumb: FC<{ paths: string[] }> = ({ paths }) => {
             }
         })
         setNodes(temp)
-    }, [])
+    }, [paths])
 
     return (
         <div className="flex items-center space-x-2 py-4 px-4 md:px-0 flex-wrap">

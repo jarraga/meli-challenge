@@ -11,9 +11,9 @@ interface Props {
 
 const Layout: FC<Props> = ({ children }) => {
 
-    const scrollContainter = useRef<HTMLDivElement>(null)
     const isLoading = useLoading()
     const innerHeight = useInnerHeight()
+    const scrollContainter = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         scrollContainter.current?.scrollTo({ top: 0, behavior: 'smooth' });

@@ -1,4 +1,3 @@
-import Image from "next/image"
 import Link from "next/link"
 import { FC } from "react"
 import { SearchResult } from "types/SearchResult"
@@ -11,7 +10,7 @@ const Card: FC<Props> = ({ data }) => {
 
     return (
         <Link href={`/items/${data.id}`}>
-            <div className="p-4 grid md:grid-cols-[auto_1fr_15%] first:border-t-0 border-t border-gray1 cursor-pointer">
+            <div className="p-4 grid grid-cols-1 md:grid-cols-[auto_1fr_15%] first:border-t-0 border-t border-gray1 cursor-pointer">
                 <img width={180} height={180} className="object-contain rounded mx-auto md:mx-0" src={data.picture} alt={data.title} />
                 <div className="md:ml-4 md:mt-0 mt-4">
                     <div className="flex items-center">

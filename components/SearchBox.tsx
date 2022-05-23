@@ -71,7 +71,6 @@ const SearchBox = () => {
 
         if (e.key == 'Enter') {
             search()
-            setSuggestions([])
         }
 
         if (e.key == 'Escape') {
@@ -98,16 +97,27 @@ const SearchBox = () => {
 
     return (
         <div className='bg-brand py-3 px-4 relative shadow flex items-center md:pr-8'>
+
+            {/* background */}
             <AnimatePresence>
                 {!!suggestions.length && <motion.div {...motionValues} onClick={() => setSuggestions([])} className="fixed top-[72px] left-0 w-full h-full bg-white/90 sm:bg-white/50 sm:backdrop-blur" />}
             </AnimatePresence>
 
+            {/* input bar */}
             <div className="mx-auto h-full w-full md:max-w-cont flex items-center">
                 <Link href="/">
                     <img onClick={() => setTerm('')} width={48} height={48} className="cursor-pointer" alt="Logo" src="/favicon.svg" />
                 </Link>
                 <div className={`ml-4 w-full h-full py-3 justify-between flex items-center shadow relative z-10 bg-white ${!!suggestions.length ? 'rounded-t-[2px]' : 'rounded-[2px]'}`}>
-                    <input value={term} disabled={isLoading} className={`outline-none px-4 w-full`} ref={inputElement} onChange={handleInput} onFocus={handleFocus} onKeyDown={handleKeyDown} type="text" placeholder="Nunca dejes de buscar" />
+                    <input
+                        type="text"
+                        value={term}
+                        disabled={isLoading}
+                        className={`outline-none px-4 w-full`}
+                        ref={inputElement} onChange={handleInput}
+                        onFocus={handleFocus} onKeyDown={handleKeyDown}
+                        placeholder="Nunca dejes de buscar"
+                    />
                     <div className='bg-gray1 h-full w-[1px]' />
                     <button onClick={() => search()} className='navigation text-gray2 px-4'>&#59943;</button>
 
@@ -125,11 +135,8 @@ const SearchBox = () => {
                     </AnimatePresence>
                 </div>
             </div>
-
-
         </div>
     )
 }
-
 
 export default SearchBox

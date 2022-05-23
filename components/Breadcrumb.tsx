@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 
 const Breadcrumb: FC<{ paths: string[] }> = ({ paths }) => {
 
@@ -11,7 +11,7 @@ const Breadcrumb: FC<{ paths: string[] }> = ({ paths }) => {
             temp.push(<p className={`text-gray3 ${i == paths.length - 1
                 ? 'font-bold' : ''}`} key={path + i}>{path}</p>)
             if (i < paths.length - 1) {
-                temp.push(<img width={6} height={8} key={i} alt="majorSymbol" src="/images/majorSymbol.svg" />)
+                temp.push(<img width={6} height={8} key={i} alt="major symbol" src="/images/majorSymbol.svg" />)
             }
         })
         setNodes(temp)

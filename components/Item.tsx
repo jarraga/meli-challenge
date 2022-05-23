@@ -54,7 +54,7 @@ const Item: FC<Props> = ({ data }) => {
             })
         } else {
             await navigator.clipboard.writeText(process.env.NEXT_PUBLIC_APP_BASE_URL + router.asPath);
-            alert('Enlace copiado!')
+            alert('Link copiado!')
         }
     }
 
@@ -75,7 +75,9 @@ const Item: FC<Props> = ({ data }) => {
                         {!data.description && <p className="text-[16px] mt-[32px]">Producto sin descripción</p>}
                     </div>
                     <div className="md:order-2">
-                        <p className="text-[14px] md:mt-[32px] text-gray3">{CONDITION[data.condition]} - {parseSoldQuantity(data.sold_quantity)}</p>
+                        <p className="text-[14px] md:mt-[32px] text-gray3">
+                            {CONDITION[data.condition]} - {parseSoldQuantity(data.sold_quantity)}
+                        </p>
                         <h3 className="text-[24px] mt-[16px]">{data.title}</h3>
                         <div className="flex items-start mt-[32px]">
                             <p className="text-[46px] leading-[46px]">{parseAmount(data.price.amount)}</p>
@@ -83,7 +85,9 @@ const Item: FC<Props> = ({ data }) => {
                         </div>
                         <div className="mt-[32px] md:pr-[32px]">
                             <a href={data.url} target="_blank" rel="noreferrer" title={data.title} >
-                                <button className="text-white bg-primary hover:bg-primaryHover transition p-4 w-full rounded">Comprar</button>
+                                <button className="text-white bg-primary hover:bg-primaryHover transition p-4 w-full rounded">
+                                    Comprar
+                                </button>
                             </a>
                         </div>
                     </div>

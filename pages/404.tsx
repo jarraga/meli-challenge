@@ -12,7 +12,7 @@ const Home: NextPage = () => {
         <meta property="og:title" content="MELI frontend challenge" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/images/og.jpeg" />
-        <meta property="og:url" content="https://jarraga-meli-challenge.vercel.app" />
+        <meta property="og:url" content={process.env.NEXT_PUBLIC_APP_BASE_URL} />
       </Head>
 
       <div className='w-full h-full flex flex-col space-y-4 justify-center items-center p-12'>

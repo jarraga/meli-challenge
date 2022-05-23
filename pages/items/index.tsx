@@ -22,7 +22,7 @@ const Home: NextPage<Props> = ({ query, searchResult }) => {
         <meta property="og:title" content={`Resultados para "${query}" | MELI frontend challenge`} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={searchResult.items?.[0]?.picture || '/images/og.jpeg'} />
-        <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items?q=${query}`} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_APP_BASE_URL}/items?q=${query}`} />
       </Head>
 
       {searchResult.items.length == 0 &&

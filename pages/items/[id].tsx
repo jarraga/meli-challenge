@@ -21,7 +21,7 @@ const Home: NextPage<Props> = ({ itemResult }) => {
         <meta property="og:title" content={`${item.title} | MELI frontend challenge`} />
         <meta property="og:type" content="website" />
         <meta property="og:image" content={item.picture} />
-        <meta property="og:url" content={`https://jarraga-meli-challenge.vercel.app/items/${item.id}`} />
+        <meta property="og:url" content={`${process.env.NEXT_PUBLIC_APP_BASE_URL}/items/${item.id}`} />
       </Head>
 
       <div className='w-full'>

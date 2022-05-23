@@ -9,6 +9,7 @@
 <img style="float: right;width:49%;margin-left:1%" src="./docs/pic02.png">
 
 ---
+
 ### 💻 Tech stack
 
 - [Next.js](https://nextjs.org/docs) + [Typescript](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
@@ -22,7 +23,7 @@
 - Sugerencias
 - Búsquedas recientes
 - Botón compartir
-- Detección de link en texto recibido de la descripción
+- Detección de links en texto recibido de la descripción
 - Transición entre páginas (custom hook)
 - Open graph tags
 

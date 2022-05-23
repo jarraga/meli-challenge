@@ -4,10 +4,14 @@
 
 > [Live demo](https://jarraga-meli-challenge.vercel.app)
 
+![Picture 1](/docs/pic00.png)
+<img style="float: left;width:49%;margin-right:1%" src="./docs/pic01.png">
+<img style="float: right;width:49%;margin-left:1%" src="./docs/pic02.png">
+
 ---
 ### 💻 Tech stack
 
-- [Next.js](https://nextjs.org/docs)
+- [Next.js](https://nextjs.org/docs) + [Typescript](https://www.typescriptlang.org/docs/handbook/2/basic-types.html)
 - [tailwindcss](https://tailwindcss.com/docs/installation)
 - [FramerMotion](https://www.framer.com/docs/animation)
 
@@ -19,6 +23,8 @@
 - Búsquedas recientes
 - Botón compartir
 - Detección de link en texto recibido de la descripción
+- Transición entre páginas (custom hook)
+- Open graph tags
 
 ### ℹ️ Aclaraciones
 
@@ -26,7 +32,7 @@
 
 ---
 
-### Setup
+### ⚙️ Setup
 
 - Varibales de entorno
 
@@ -42,9 +48,22 @@ NEXT_PUBLIC_APP_BASE_URL=http://localhost:3000
 ```
 - Comandos
 
-```shell
-
+```bash
 # install dependencies
+npm i
 
+# run development server
+npm run dev
 
+# build for production
+npm run build
+
+# start production server
+npm start
 ```
+
+- ⚡️ [Prueba de rendimiento](https://pagespeed.web.dev/report?url=https%3A%2F%2Fjarraga-meli-challenge.vercel.app%2F)
+
+---
+
+Por [@jorge.arraga](https://www.instagram.com/jorge.arraga/)
